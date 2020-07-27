@@ -21,9 +21,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/crunchydata/crunchy-proxy/config"
-	"github.com/crunchydata/crunchy-proxy/server"
-	"github.com/crunchydata/crunchy-proxy/util/log"
+	"github.com/elmawardy/crunchy-proxy/config"
+	"github.com/elmawardy/crunchy-proxy/server"
+	"github.com/elmawardy/crunchy-proxy/util/log"
 )
 
 var background bool

@@ -17,8 +17,8 @@ package config
 import (
 	"github.com/spf13/viper"
 
-	"github.com/crunchydata/crunchy-proxy/common"
-	"github.com/crunchydata/crunchy-proxy/util/log"
+	"github.com/elmawardy/crunchy-proxy/common"
+	"github.com/elmawardy/crunchy-proxy/util/log"
 )
 
 var c Config

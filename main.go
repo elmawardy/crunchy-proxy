@@ -15,9 +15,13 @@ limitations under the License.
 package main
 
 import (
-	"github.com/crunchydata/crunchy-proxy/cli"
+	"github.com/elmawardy/crunchy-proxy/cli"
+	"os"
 )
 
 func main() {
+	os.Args =  []string{"crunchy-proxy","start","--config=config.yaml"}
+	
+
 	cli.Main()
 }

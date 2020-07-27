@@ -17,8 +17,9 @@ package proxy
 
 import (
 	"strings"
+	"fmt"
 
-	"github.com/crunchydata/crunchy-proxy/protocol"
+	"github.com/elmawardy/crunchy-proxy/protocol"
 )
 
 // GetAnnotations the annotation approach
@@ -37,6 +38,16 @@ func getAnnotations(m []byte) map[AnnotationType]bool {
 	/* Find the start and end position of the annotations. */
 	startPos := strings.Index(query, AnnotationStartToken)
 	endPos := strings.Index(query, AnnotationEndToken)
+
+	// check if the incoming request has select on first 6 characters then add the read annotation
+	if len(query) >= 6 {
+		first := fmt.Sprintf("%v",query[:6])
+		if strings.ToLower(first) ==  "select"{
+			query = "/* read */ "+query;
+			annotations[ReadAnnotation] = true
+		}
+	}
+	
 
 	/*
 	 * If the start or end positions are less than zero then that means that
