@@ -20,6 +20,7 @@ import (
 	"fmt"
 
 	"github.com/elmawardy/crunchy-proxy/protocol"
+	"github.com/elmawardy/crunchy-proxy/config"
 )
 
 // GetAnnotations the annotation approach
@@ -39,14 +40,19 @@ func getAnnotations(m []byte) map[AnnotationType]bool {
 	startPos := strings.Index(query, AnnotationStartToken)
 	endPos := strings.Index(query, AnnotationEndToken)
 
+
+	// if forceparce in config is true then parse the query and determine if it's read or write request
+	if config.GetBool("forceparse") {
 	// check if the incoming request has select on first 6 characters then add the read annotation
-	if len(query) >= 6 {
-		first := fmt.Sprintf("%v",query[:6])
-		if strings.ToLower(first) ==  "select"{
-			query = "/* read */ "+query;
-			annotations[ReadAnnotation] = true
+		if len(query) >= 6 {
+			first := fmt.Sprintf("%v",query[:6])
+			if strings.ToLower(first) ==  "select"{
+				query = "/* read */ "+query;
+				annotations[ReadAnnotation] = true
+			}
 		}
 	}
+
 	
 
 	/*

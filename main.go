@@ -16,12 +16,10 @@ package main
 
 import (
 	"github.com/elmawardy/crunchy-proxy/cli"
-	"os"
+	// "os"
 )
 
 func main() {
-	os.Args =  []string{"crunchy-proxy","start","--config=config.yaml"}
-	
-
+	// os.Args =  []string{"crunchy-proxy","start","--config=config.yaml"}
 	cli.Main()
 }

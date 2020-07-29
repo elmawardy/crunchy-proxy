@@ -19,15 +19,22 @@ import (
 
 	"github.com/elmawardy/crunchy-proxy/common"
 	"github.com/elmawardy/crunchy-proxy/util/log"
+	"github.com/fsnotify/fsnotify"
 )
 
 var c Config
 
 func init() {
+	viper.SetDefault("forceparse", false)
 	viper.SetConfigType("yaml")
 	viper.SetConfigName("config")
 	viper.AddConfigPath("/etc/crunchy-proxy")
 	viper.AddConfigPath(".")
+
+	viper.WatchConfig()
+	viper.OnConfigChange(func(e fsnotify.Event) {
+		log.Info("Config file changed: "+ e.Name)
+	})
 }
 
 func GetConfig() Config {

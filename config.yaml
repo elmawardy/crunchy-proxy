@@ -6,18 +6,20 @@ server:
 
 nodes:
   master:
-    hostport: 172.19.13.165:5432
+    # hostport: 172.19.13.165:5432
+    hostport: 172.19.2.154:5432
     role: master
     metadata: {}
   replica1:
-    hostport: 172.19.13.78:5432
+    # hostport: 172.19.13.78:5432
+    hostport: 172.19.2.155:5432
     role: replica
     metadata: {}
 
 credentials:
   username: postgres
-  database: elmawardy
-  password: Must123
+  database: postgres
+  password: 123456
   options:
   ssl:
     enable: false
@@ -29,3 +31,5 @@ pool:
 healthcheck:
   delay: 60
   query: select now();
+
+forceparse: false

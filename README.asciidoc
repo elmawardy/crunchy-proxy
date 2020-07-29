@@ -69,6 +69,13 @@ The following resources are useful in understanding the PostgreSQL wire protocol
 
 In the future, by working at the wire protocol level, *crunchy-proxy* can implement a variety of features important for high speed proxy handling and for supporting PostgreSQL features.
 
+== Parsing (CAUTION - not ready for production !!)
+
+By default crunchy-proxy doesn't parse the full sql query for performance reasons , however if you want to pay the performance degration for automatically parsing your queries you can
+enable the "forceparse" option in the config file , this can be useful if you don't want to change your application codes to add the read annotation.
+
+default value of "forceparse" is false
+
 == Execution
 
 The proxy is a golang binary, you execute it as follows:

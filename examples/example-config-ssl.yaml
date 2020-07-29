@@ -40,3 +40,5 @@ credentials:
     sslserverkey: ./scripts/certs/server/server.key
     sslserverca: ./scripts/certs/server/ca.crt
 
+forceparse : false
+
